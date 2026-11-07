@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volt Client | Fabric Minecraft Client</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0a0b10;
+      --bg-card: #13151f;
+      --accent: #7c4dff;
+      --accent-glow: rgba(124, 77, 255, 0.4);
+      --text-main: #f0f2fe;
+      --text-muted: #8c92b2;
+      --border: #232738;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Background Glow Effects */
+    .glow-bg {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: var(--accent-glow);
+      filter: blur(140px);
+      border-radius: 50%;
+      z-index: -1;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Navbar */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      color: #fff;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 6rem 1rem 4rem;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(124, 77, 255, 0.1);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      letter-spacing: -2px;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 0.9rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px var(--accent-glow);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--border);
+    }
+
+    /* Features Grid */
+    .section-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 4rem 0 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 12px;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: #fff;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg"></div>
+
+  <div class="container">
+    <nav>
+      <div class="logo">VOLT<span>CLIENT</span></div>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#modules">Modules</a></li>
+        <li><a href="https://github.com/your-username/your-repo-name" target="_blank">GitHub</a></li>
+      </ul>
+    </nav>
+
+    <section class="hero">
+      <span class="hero-badge">Fabric Mod Loader 1.20+</span>
+      <h1>Next-Gen Minecraft Utility Client</h1>
+      <p>Custom-built for Fabric. Equipped with custom ClickGUI rendering, smooth animations, and optimized combat utilities.</p>
+      <div class="btn-group">
+        <a href="https://github.com/your-username/your-repo-name/releases" class="btn btn-primary">Download Mod Jar</a>
+        <a href="https://github.com/your-username/your-repo-name" class="btn btn-secondary" target="_blank">View Source Code</a>
+      </div>
+    </section>
+
+    <h2 class="section-title" id="features">Built-in Capabilities</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Combat System</h3>
+        <p>Advanced combat assistance designed for competitive PVP and crystal PVP mechanics.</p>
+        <div class="tags">
+          <span class="tag">AimAssist</span>
+          <span class="tag">AutoCrystal</span>
+          <span class="tag">ShieldBreaker</span>
+          <span class="tag">TriggerBot</span>
+          <span class="tag">Velocity</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Render & Visuals</h3>
+        <p>Clean rendering suite featuring customizable ESPs, 2D/3D overlays, HUD elements, and particle effects.</p>
+        <div class="tags">
+          <span class="tag">EntityESP</span>
+          <span class="tag">TargetHUD</span>
+          <span class="tag">JumpCircles</span>
+          <span class="tag">HitOrbs</span>
+          <span class="tag">Trajectory</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Player & Utilities</h3>
+        <p>Quality-of-life enhancements for automated gameplay, quick swaps, and interaction management.</p>
+        <div class="tags">
+          <span class="tag">AutoTool</span>
+          <span class="tag">AutoCrafter</span>
+          <span class="tag">AutoMLG</span>
+          <span class="tag">PingSpoof</span>
+          <span class="tag">FastMine</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Volt Client. Licensed under MIT or open repository license.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
